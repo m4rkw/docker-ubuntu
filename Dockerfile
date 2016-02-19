@@ -1,10 +1,10 @@
-FROM ubuntu:14.04.3
+FROM ubuntu:14.04.4
 
-MAINTAINER Daniel STANCU <birkof@birkof.ro>
+MAINTAINER m4rkw
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
-ENV TIMEZONE "Europe/Bucharest"
+ENV TIMEZONE "UTC"
 
 # Enable Ubuntu Multiverse.
 RUN sed -i 's/^#\s*\(deb.*multiverse\)$/\1/g' /etc/apt/sources.list
