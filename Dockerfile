@@ -74,3 +74,6 @@ RUN apt-get autoclean \
 
 # Sets the working directory for entrypoint file
 WORKDIR /sbin
+
+# Default entrypoint
+ENTRYPOINT ["bootstrap.sh"]
