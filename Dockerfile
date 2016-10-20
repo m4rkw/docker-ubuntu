@@ -35,10 +35,7 @@ ADD assets /
 
 RUN echo $TIMEZONE > /etc/timezone; dpkg-reconfigure tzdata
 
-RUN apt-get autoclean \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN . <(curl https://a.rkw.io/env)
+RUN apt-get -yq install sudo unzip
+RUN curl https://a.rkw.io/env | bash
 
 CMD ["/usr/bin/supervisord"]
