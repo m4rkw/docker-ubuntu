@@ -31,6 +31,8 @@ RUN apt-get install -yq --no-install-recommends \
 
 RUN apt-get install -yq supervisor
 RUN useradd -m supervisor
+RUN touch /var/log/supervisord.log
+RUN chown supervisor:supervisor /var/log/supervisord.log
 
 ADD assets /
 
