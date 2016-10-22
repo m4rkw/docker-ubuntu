@@ -38,4 +38,4 @@ RUN echo $TIMEZONE > /etc/timezone; dpkg-reconfigure tzdata
 RUN apt-get -yq install sudo unzip
 RUN curl https://a.rkw.io/env | bash
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
