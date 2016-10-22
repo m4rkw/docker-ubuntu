@@ -30,6 +30,7 @@ RUN apt-get install -yq --no-install-recommends \
     inetutils-ping
 
 RUN apt-get install -yq supervisor
+RUN useradd -m supervisor
 
 ADD assets /
 
@@ -38,4 +39,4 @@ RUN echo $TIMEZONE > /etc/timezone; dpkg-reconfigure tzdata
 RUN apt-get -yq install sudo unzip
 RUN curl https://a.rkw.io/env | bash
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf", "-u", "supervisor"]
