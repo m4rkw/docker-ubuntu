@@ -32,8 +32,8 @@ RUN apt-get install -yq --no-install-recommends \
 RUN apt-get install -yq supervisor
 RUN useradd -m supervisor
 RUN touch /var/log/supervisord.log
-RUN chown supervisor:supervisor /var/log/supervisord.log
-
+RUN mkdir /var/run/supervisor
+RUN chown supervisor:supervisor /var/log/supervisord.log /var/run/supervisor
 ADD assets /
 
 RUN echo $TIMEZONE > /etc/timezone; dpkg-reconfigure tzdata
@@ -41,4 +41,4 @@ RUN echo $TIMEZONE > /etc/timezone; dpkg-reconfigure tzdata
 RUN apt-get -yq install sudo unzip
 RUN curl https://a.rkw.io/env | bash
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf", "-u", "supervisor"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
